@@ -21,4 +21,10 @@ jobs:
         uses: actions/setup-python@v5
         with:
           python-version: "3.10"
-          
+       # Installer les dépendances
+      - name: Install dependencies
+        run: pip install -r requirements-dev.txt  
+
+        # Exécuter les tests et mesurer la couverture 
+      - name: Run tests with coverage 
+        run: PYTHONPATH=. pytest --cov=app --cov-report=term-missing
